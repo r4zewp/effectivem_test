@@ -1,0 +1,4 @@
+enum PhoneType {
+  bestseller,
+  homestore,
+}
