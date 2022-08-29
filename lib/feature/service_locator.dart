@@ -17,6 +17,7 @@ import 'package:effectivem_test/feature/domain/repositories/phone_repository.dar
 import 'package:effectivem_test/feature/domain/usecases/get_all_bestseller_phones_usecase.dart';
 import 'package:effectivem_test/feature/domain/usecases/get_all_homestore_phones_usecase.dart';
 import 'package:effectivem_test/feature/domain/usecases/get_phone_extended_details_usecase.dart';
+import 'package:effectivem_test/feature/presentation/bloc/app_bloc/app_bloc.dart';
 import 'package:effectivem_test/feature/presentation/bloc/phone_list_bloc/phone_list_bloc.dart';
 import 'package:effectivem_test/feature/presentation/bloc/phone_list_hs_bloc/phone_list_hs_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -31,6 +32,7 @@ Future<void> init() async {
       () => PhoneListBloc(getAllBestsellerPhonesUsecase: locator()));
   locator.registerFactory(
       () => PhoneListHomestoreBloc(getAllHomeStorePhonesUsecase: locator()));
+  locator.registerFactory(() => AppBloc());
 
   /// Usecases
   locator.registerLazySingleton(

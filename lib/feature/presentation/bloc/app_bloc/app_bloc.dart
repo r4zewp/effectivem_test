@@ -1,0 +1,21 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+part 'app_event.dart';
+part 'app_state.dart';
+
+class AppBloc extends Bloc<AppEvent, AppState> {
+  AppBloc() : super(AppLoadingState()) {
+    on<AppInitialized>(
+      (event, emit) async {
+        emit(AppLoadingState());
+        await Future.delayed(
+          const Duration(milliseconds: 2000),
+          () {
+            emit(AppLoadedState());
+          },
+        );
+      },
+    );
+  }
+}

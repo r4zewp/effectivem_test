@@ -4,6 +4,8 @@ import 'package:effectivem_test/feature/presentation/pages/splash/splash_screen.
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
+import '../../presentation/pages/wrapper/wrapper.dart';
+
 class CustomRouter {
   static Route<dynamic> generateRoute(
       RouteSettings settings, BuildContext context) {
@@ -24,6 +26,12 @@ class CustomRouter {
         return platformPageRoute(
           context: context,
           builder: (_) => const Splash(),
+        );
+
+      case PagesPath.wrapper:
+        return platformPageRoute(
+          context: context,
+          builder: (_) => const Wrapper(),
         );
 
       default:
