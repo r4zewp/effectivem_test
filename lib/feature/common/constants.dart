@@ -28,8 +28,12 @@ class Constants {
   static const String hotSales = "Hot sales";
   static const String seeMore = "see more";
   static const String buyNow = "Buy now!";
+  static const String explorer = "Explorer";
+  static const String shop = "Shop";
+  static const String favorite = "Favorite";
+  static const String profile = "Profile";
 
-  /// Dictionaries.
+  /// Maps.
   static const Map<String, String> categories = {
     'Phones': 'assets/icons/phone.svg',
     "Computers": "assets/icons/computer.svg",
@@ -37,6 +41,16 @@ class Constants {
     "Books": "assest/icons/books.svg",
     'Phones copy': 'assets/icons/phone.svg', // Just to make another category
   };
+
+  static const Map<String, String> bottomNavBarItems = {
+    'Explorer': "$iconRootUrl/explorer.svg",
+    'Shop': "$iconRootUrl/cart.svg",
+    'Favorites': "$iconRootUrl/heart.svg",
+    "Profile": "$iconRootUrl/profile.svg",
+  };
+
+  /// Some constant urls.
+  static const String iconRootUrl = "assets/icons/bottom_nav_bar";
 
   /// Primary animation duration.
   static const primaryDuration = Duration(milliseconds: 100);

@@ -1,9 +1,15 @@
 import 'package:effectivem_test/feature/common/constants.dart';
+import 'package:effectivem_test/feature/domain/entities/phone_entity.dart';
 import 'package:effectivem_test/feature/presentation/pages/home/widgets/best_seller/phone_grid_tile.dart';
 import 'package:flutter/material.dart';
 
 class PhonesGridWidget extends StatefulWidget {
-  const PhonesGridWidget({Key? key}) : super(key: key);
+  const PhonesGridWidget({
+    Key? key,
+    required this.phones,
+  }) : super(key: key);
+
+  final List<PhoneEntity> phones;
 
   @override
   State<PhonesGridWidget> createState() => _PhonesGridWidgetState();
@@ -27,9 +33,11 @@ class _PhonesGridWidgetState extends State<PhonesGridWidget> {
         gridDelegate: _gridDlgt,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: widget.phones.length,
         itemBuilder: (context, index) {
-          return const PhoneGridTile();
+          return PhoneGridTile(
+            phone: widget.phones[index],
+          );
         },
       ),
     );

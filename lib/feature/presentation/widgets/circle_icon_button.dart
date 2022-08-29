@@ -11,13 +11,11 @@ class CircleIconButton extends StatefulWidget {
     required this.height,
     required this.iconHeight,
     required this.iconWidth,
-    this.disabledIconColor,
   }) : super(key: key);
 
   final String iconUrl;
   final Color backgroundColor;
   final Color activeIconColor;
-  final Color? disabledIconColor;
   final double width;
   final double height;
   final double iconWidth;

@@ -55,8 +55,12 @@ dependencies:
   # Library that provides different widgets for platforms
   flutter_platform_widgets: ^2.0.0
 
-  # SVG Pictures readed.
+  # SVG Pictures reader.
   flutter_svg: ^1.1.4
+  intl: ^0.17.0
+
+
+  cached_network_image: ^3.2.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +87,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icons/
+    - assets/icons/bottom_nav_bar/
     - assets/img/
 
   # An image asset can refer to one or more resolution-specific "variants", see

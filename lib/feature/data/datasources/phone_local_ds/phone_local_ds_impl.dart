@@ -34,7 +34,7 @@ class PhoneLocalDatasourceImpl extends PhoneLocalDatasource {
         cachedPhones.map((e) => PhoneModel.fromJson(jsonDecode(e))).toList(),
       );
     } else {
-      throw CacheException();
+      return [];
     }
   }
 }

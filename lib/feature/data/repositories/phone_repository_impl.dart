@@ -34,14 +34,22 @@ class PhoneRepositoryImpl extends PhoneRepository {
       Future<List<PhoneModel>> Function() getPhones, String prefsKey) async {
     if (await networkConnection.isConnected) {
       try {
-        final phones = await remoteDatasource.getAllBestSellerPhones();
-
-        localDatasource.cachePhones(
-          phones,
-          prefsKey: prefsKey,
+        final phones = await localDatasource.getAllCachedPhones(
+          prefsKey: Constants.cachedBestSellerPhonesKey,
         );
 
-        return Right(phones);
+        if (phones.isNotEmpty) {
+          return Right(phones);
+        } else {
+          final phones = await remoteDatasource.getAllBestSellerPhones();
+
+          localDatasource.cachePhones(
+            phones,
+            prefsKey: prefsKey,
+          );
+
+          return Right(phones);
+        }
       } on ServerException {
         return Left(ServerFailure());
       }

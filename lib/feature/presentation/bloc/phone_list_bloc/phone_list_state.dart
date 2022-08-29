@@ -12,7 +12,11 @@ class PhoneListError extends PhoneListState {
   PhoneListError({required this.message});
 }
 
-class PhoneListLoading extends PhoneListState {}
+class PhoneListLoading extends PhoneListState {
+  final bool isFirstTime;
+
+  PhoneListLoading({required this.isFirstTime});
+}
 
 class PhoneListLoaded extends PhoneListState {
   final List<PhoneEntity> phones;

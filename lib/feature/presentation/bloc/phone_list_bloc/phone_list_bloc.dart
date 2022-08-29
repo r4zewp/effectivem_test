@@ -4,6 +4,7 @@ import 'package:effectivem_test/feature/domain/entities/phone_entity.dart';
 import 'package:effectivem_test/feature/domain/usecases/get_all_bestseller_phones_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'phone_list_event.dart';
 part 'phone_list_state.dart';
@@ -16,16 +17,23 @@ class PhoneListBloc extends Bloc<PhoneListEvent, PhoneListState> {
   }) : super(PhoneListEmpty()) {
     on<PhoneListLoadingInitialized>(
       (event, emit) async {
-        emit(PhoneListLoading());
-        final failureOrBestsellerPhones = await getAllBestsellerPhonesUsecase();
+        final prefs = await SharedPreferences.getInstance();
+        bool? isFirstRun = prefs.getBool(Constants.isFirstRun);
 
-        failureOrBestsellerPhones.fold(
-          (error) => emit(
-            PhoneListError(message: _failureToErrorMessage(error)),
-          ),
-          (phones) => emit(
-            PhoneListLoaded(phones: phones),
-          ),
+        isFirstRun ??= true;
+        emit(PhoneListLoading(isFirstTime: isFirstRun));
+
+        final failureOrBestsellerPhones = await getAllBestsellerPhonesUsecase();
+        await failureOrBestsellerPhones.fold(
+          (error) async {
+            await prefs.setBool(Constants.isFirstRun, isFirstRun!);
+            emit(PhoneListError(message: _failureToErrorMessage(error)));
+          },
+          (phones) async {
+            isFirstRun = false;
+            await prefs.setBool(Constants.isFirstRun, false);
+            emit(PhoneListLoaded(phones: phones));
+          },
         );
       },
     );

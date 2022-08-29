@@ -40,7 +40,7 @@ class _WrapperState extends State<Wrapper> {
           Navigator.of(context).pushNamed(PagesPath.splash);
         }
         if (state is AppLoadedState) {
-          Navigator.of(context).pushNamed(PagesPath.homepage);
+          Navigator.of(context).pushNamed(PagesPath.rootPageView);
         }
       },
     );
