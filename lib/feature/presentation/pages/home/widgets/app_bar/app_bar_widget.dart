@@ -1,6 +1,7 @@
 import 'package:effectivem_test/feature/common/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../filter/filter_widget.dart';
 import 'icon_button_widget.dart';
 
 PreferredSizeWidget? buildHomeAppBar(BuildContext context,
@@ -42,7 +43,9 @@ PreferredSizeWidget? buildHomeAppBar(BuildContext context,
         height: screenSize.height * (15.31 / Constants.propHeight),
         padding: EdgeInsets.only(
             right: screenSize.width * (15 / Constants.propWidth)),
-        onPressed: () {},
+        onPressed: () {
+          buildCustomModalBottomSheet(context);
+        },
       ),
     ],
   );

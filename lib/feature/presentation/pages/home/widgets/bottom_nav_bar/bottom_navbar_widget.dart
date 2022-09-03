@@ -9,7 +9,7 @@ Widget buildNavBar(
   required void Function(int index) updateindex,
 }) {
   return Container(
-    alignment: Alignment.center,
+    alignment: Alignment.centerLeft,
     width: double.infinity,
     height: screenSize.height * (72 / Constants.propHeight),
     decoration: const BoxDecoration(

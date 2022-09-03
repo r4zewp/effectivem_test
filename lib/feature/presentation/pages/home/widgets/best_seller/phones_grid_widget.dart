@@ -18,7 +18,7 @@ class PhonesGridWidget extends StatefulWidget {
 class _PhonesGridWidgetState extends State<PhonesGridWidget> {
   final SliverGridDelegateWithFixedCrossAxisCount _gridDlgt =
       const SliverGridDelegateWithFixedCrossAxisCount(
-    mainAxisExtent: 227,
+    mainAxisExtent: 225,
     crossAxisCount: 2,
     mainAxisSpacing: 12,
     crossAxisSpacing: 12,

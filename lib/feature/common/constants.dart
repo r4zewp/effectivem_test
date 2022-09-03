@@ -32,6 +32,8 @@ class Constants {
   static const String shop = "Shop";
   static const String favorite = "Favorite";
   static const String profile = "Profile";
+  static const String done = "Done";
+  static const String filterOptions = "Filter options";
 
   /// Maps.
   static const Map<String, String> categories = {
